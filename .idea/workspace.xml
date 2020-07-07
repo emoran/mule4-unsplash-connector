@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="67947663-29e2-448f-9d35-5dfd8a62053b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="PantsLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/workspace/source" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1e5JBnQTCDGP7ipCEKZCiyiQ3bM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/icon" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/icon" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="67947663-29e2-448f-9d35-5dfd8a62053b" name="Default Changelist" comment="" />
+      <created>1593605387363</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593605387363</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="773" y="304" key="#com.intellij.ide.util.MemberChooser" timestamp="1594160991149">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state x="773" y="304" key="#com.intellij.ide.util.MemberChooser/0.23.1920.1129@0.23.1920.1129" timestamp="1594160991149" />
+    <state width="1369" height="313" key="GridCell.Tab.0.bottom" timestamp="1594155566163">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state width="1369" height="313" key="GridCell.Tab.0.bottom/0.23.1920.1129@0.23.1920.1129" timestamp="1594155566163" />
+    <state width="1369" height="313" key="GridCell.Tab.0.center" timestamp="1594155566163">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state width="1369" height="313" key="GridCell.Tab.0.center/0.23.1920.1129@0.23.1920.1129" timestamp="1594155566163" />
+    <state width="1369" height="313" key="GridCell.Tab.0.left" timestamp="1594155566162">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state width="1369" height="313" key="GridCell.Tab.0.left/0.23.1920.1129@0.23.1920.1129" timestamp="1594155566162" />
+    <state width="1369" height="313" key="GridCell.Tab.0.right" timestamp="1594155566163">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state width="1369" height="313" key="GridCell.Tab.0.right/0.23.1920.1129@0.23.1920.1129" timestamp="1594155566163" />
+    <state x="498" y="249" key="Maven.ArtifactSearchDialog" timestamp="1594161202611">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state x="498" y="249" key="Maven.ArtifactSearchDialog/0.23.1920.1129@0.23.1920.1129" timestamp="1594161202611" />
+    <state x="461" y="226" key="SettingsEditor" timestamp="1593605651040">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state x="461" y="226" key="SettingsEditor/0.23.1920.1129@0.23.1920.1129" timestamp="1593605651040" />
+    <state x="625" y="274" width="670" height="675" key="run.anything.popup" timestamp="1594155434114">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state x="625" y="274" width="670" height="675" key="run.anything.popup/0.23.1920.1129@0.23.1920.1129" timestamp="1594155434114" />
+  </component>
+</project>
