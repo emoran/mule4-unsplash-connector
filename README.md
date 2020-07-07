@@ -1,13 +1,7 @@
-<<<<<<< HEAD
+
 # Unsplash Extension
 
-Add description ...
-
-
-...
-
-
-...
+Allows to connect to the Unsplash API allowing to bring HD images from the bigger free photo community.
 
 
 Add this dependency to your application pom.xml
@@ -21,4 +15,4 @@ Add this dependency to your application pom.xml
 =======
 # unsplash-connector
 Mule 4 Unsplash connector
->>>>>>> 259a81b20c7c54ca873538c4806d5426755cceda
+
