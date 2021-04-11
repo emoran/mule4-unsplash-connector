@@ -3,7 +3,7 @@
     "id": "java",
     "attributes": {
       "type": "org.mule.extension.unsplash.internal.UnsplashExtension",
-      "version": "1.0.6"
+      "version": "1.0.9"
     }
   },
   "name": "Unsplash",
@@ -13,7 +13,9 @@
     "attributes": {
       "privilegedExportedPackages": [],
       "privilegedArtifactIds": [],
-      "exportedPackages": [],
+      "exportedPackages": [
+        "com.emoran"
+      ],
       "exportedResources": []
     }
   },

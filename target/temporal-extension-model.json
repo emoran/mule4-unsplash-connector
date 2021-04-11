@@ -1,14 +1,14 @@
 {
   "name": "Unsplash",
   "description": "This is the main class of an extension, is the entry point from which configurations, connection providers, operations and sources are going to be declared.",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "vendor": "Mulesoft",
   "category": "COMMUNITY",
   "xmlDsl": {
     "prefix": "unsplash",
     "namespace": "http://www.mulesoft.org/schema/mule/unsplash",
     "schemaLocation": "http://www.mulesoft.org/schema/mule/unsplash/current/mule-unsplash.xsd",
-    "schemaVersion": "1.0.6",
+    "schemaVersion": "1.0.9",
     "xsdFileName": "mule-unsplash.xsd"
   },
   "resources": [],
@@ -53,6 +53,32 @@
               },
               "allowedStereotypeModels": [],
               "name": "configId",
+              "description": "",
+              "modelProperties": {}
+            },
+            {
+              "type": {
+                "format": "java",
+                "type": "String"
+              },
+              "hasDynamicType": false,
+              "required": true,
+              "isConfigOverride": false,
+              "expressionSupport": "SUPPORTED",
+              "role": "BEHAVIOUR",
+              "dslConfiguration": {
+                "allowsInlineDefinition": true,
+                "allowsReferences": true,
+                "allowTopLevelDefinition": false
+              },
+              "layoutModel": {
+                "password": false,
+                "text": false,
+                "query": false,
+                "order": 2
+              },
+              "allowedStereotypeModels": [],
+              "name": "unsplashAccessToken",
               "description": "",
               "modelProperties": {}
             },
@@ -152,7 +178,7 @@
                 "password": false,
                 "text": false,
                 "query": false,
-                "order": 2,
+                "order": 3,
                 "tabName": "Advanced"
               },
               "allowedStereotypeModels": [],
@@ -189,11 +215,32 @@
       "operations": [
         {
           "blocking": true,
-          "executionType": "BLOCKING",
+          "executionType": "CPU_LITE",
           "output": {
             "type": {
               "format": "java",
-              "type": "String"
+              "type": "Array",
+              "annotations": {
+                "classInformation": {
+                  "classname": "java.util.List",
+                  "hasDefaultConstructor": false,
+                  "isInterface": true,
+                  "isInstantiable": false,
+                  "isAbstract": true,
+                  "isFinal": false,
+                  "implementedInterfaces": [
+                    "java.util.Collection"
+                  ],
+                  "parent": "",
+                  "genericTypes": [
+                    "com.emoran.RandonPhotoPOJO"
+                  ],
+                  "isMap": false
+                }
+              },
+              "item": {
+                "type": "@ref:com.emoran.RandonPhotoPOJO"
+              }
             },
             "hasDynamicType": false,
             "description": "",
@@ -209,14 +256,11 @@
             "modelProperties": {}
           },
           "transactional": false,
-          "requiresConnection": true,
+          "requiresConnection": false,
           "supportsStreaming": false,
           "notifications": [],
           "nestedComponents": [],
-          "errors": [
-            "UNSPLASH:RETRY_EXHAUSTED",
-            "UNSPLASH:CONNECTIVITY"
-          ],
+          "errors": [],
           "stereotype": {
             "type": "PROCESSOR",
             "namespace": "MULE"
@@ -227,12 +271,30 @@
                 {
                   "type": {
                     "format": "java",
-                    "type": "String"
+                    "type": "Number",
+                    "annotations": {
+                      "classInformation": {
+                        "classname": "java.lang.Integer",
+                        "hasDefaultConstructor": false,
+                        "isInterface": false,
+                        "isInstantiable": false,
+                        "isAbstract": false,
+                        "isFinal": true,
+                        "implementedInterfaces": [
+                          "java.lang.Comparable"
+                        ],
+                        "parent": "java.lang.Number",
+                        "genericTypes": [],
+                        "isMap": false
+                      },
+                      "int": {}
+                    }
                   },
                   "hasDynamicType": false,
                   "required": false,
                   "isConfigOverride": false,
                   "expressionSupport": "SUPPORTED",
+                  "defaultValue": "10",
                   "role": "BEHAVIOUR",
                   "dslConfiguration": {
                     "allowsInlineDefinition": true,
@@ -243,12 +305,11 @@
                     "password": false,
                     "text": false,
                     "query": false,
-                    "order": 1,
-                    "tabName": "Advanced"
+                    "order": 1
                   },
                   "allowedStereotypeModels": [],
-                  "name": "outputMimeType",
-                  "description": "The mime type of the payload that this operation outputs.",
+                  "name": "maxPhotos",
+                  "description": "",
                   "modelProperties": {}
                 }
               ],
@@ -339,113 +400,180 @@
               "name": "Output",
               "description": "",
               "modelProperties": {}
+            }
+          ],
+          "name": "getRandomPhoto",
+          "description": "Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.",
+          "modelProperties": {},
+          "kind": "operation"
+        },
+        {
+          "blocking": true,
+          "executionType": "CPU_LITE",
+          "output": {
+            "type": {
+              "format": "java",
+              "type": "@ref:com.emoran.searchPOJO"
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "outputAttributes": {
+            "type": {
+              "format": "java",
+              "type": "Void"
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "transactional": false,
+          "requiresConnection": false,
+          "supportsStreaming": false,
+          "notifications": [],
+          "nestedComponents": [],
+          "errors": [],
+          "stereotype": {
+            "type": "PROCESSOR",
+            "namespace": "MULE"
+          },
+          "parameterGroupModels": [
+            {
+              "parameters": [
+                {
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "hasDynamicType": false,
+                  "required": false,
+                  "isConfigOverride": false,
+                  "expressionSupport": "SUPPORTED",
+                  "defaultValue": "",
+                  "role": "BEHAVIOUR",
+                  "dslConfiguration": {
+                    "allowsInlineDefinition": true,
+                    "allowsReferences": true,
+                    "allowTopLevelDefinition": false
+                  },
+                  "layoutModel": {
+                    "password": false,
+                    "text": false,
+                    "query": false,
+                    "order": 1
+                  },
+                  "allowedStereotypeModels": [],
+                  "name": "searchTerm",
+                  "description": "",
+                  "modelProperties": {}
+                },
+                {
+                  "type": {
+                    "format": "java",
+                    "type": "Number",
+                    "annotations": {
+                      "classInformation": {
+                        "classname": "java.lang.Integer",
+                        "hasDefaultConstructor": false,
+                        "isInterface": false,
+                        "isInstantiable": false,
+                        "isAbstract": false,
+                        "isFinal": true,
+                        "implementedInterfaces": [
+                          "java.lang.Comparable"
+                        ],
+                        "parent": "java.lang.Number",
+                        "genericTypes": [],
+                        "isMap": false
+                      },
+                      "int": {}
+                    }
+                  },
+                  "hasDynamicType": false,
+                  "required": false,
+                  "isConfigOverride": false,
+                  "expressionSupport": "SUPPORTED",
+                  "defaultValue": "",
+                  "role": "BEHAVIOUR",
+                  "dslConfiguration": {
+                    "allowsInlineDefinition": true,
+                    "allowsReferences": true,
+                    "allowTopLevelDefinition": false
+                  },
+                  "layoutModel": {
+                    "password": false,
+                    "text": false,
+                    "query": false,
+                    "order": 2
+                  },
+                  "allowedStereotypeModels": [],
+                  "name": "page",
+                  "description": "",
+                  "modelProperties": {}
+                },
+                {
+                  "type": {
+                    "format": "java",
+                    "type": "Number",
+                    "annotations": {
+                      "classInformation": {
+                        "classname": "java.lang.Integer",
+                        "hasDefaultConstructor": false,
+                        "isInterface": false,
+                        "isInstantiable": false,
+                        "isAbstract": false,
+                        "isFinal": true,
+                        "implementedInterfaces": [
+                          "java.lang.Comparable"
+                        ],
+                        "parent": "java.lang.Number",
+                        "genericTypes": [],
+                        "isMap": false
+                      },
+                      "int": {}
+                    }
+                  },
+                  "hasDynamicType": false,
+                  "required": true,
+                  "isConfigOverride": false,
+                  "expressionSupport": "SUPPORTED",
+                  "role": "BEHAVIOUR",
+                  "dslConfiguration": {
+                    "allowsInlineDefinition": true,
+                    "allowsReferences": true,
+                    "allowTopLevelDefinition": false
+                  },
+                  "layoutModel": {
+                    "password": false,
+                    "text": false,
+                    "query": false,
+                    "order": 3
+                  },
+                  "allowedStereotypeModels": [],
+                  "name": "perPage",
+                  "description": "",
+                  "modelProperties": {}
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "layoutModel": {
+                "password": false,
+                "text": false,
+                "query": false,
+                "order": 1
+              },
+              "showInDsl": false,
+              "name": "General",
+              "description": "",
+              "modelProperties": {}
             },
             {
               "parameters": [
                 {
                   "type": {
                     "format": "java",
-                    "type": "Union",
-                    "annotations": {
-                      "typeId": "ReconnectionStrategy"
-                    },
-                    "of": [
-                      {
-                        "type": "Object",
-                        "annotations": {
-                          "typeId": "reconnect"
-                        },
-                        "fields": [
-                          {
-                            "key": {
-                              "name": "frequency"
-                            },
-                            "model": {
-                              "type": "Number",
-                              "annotations": {
-                                "int": {},
-                                "classInformation": {
-                                  "classname": "java.lang.Long",
-                                  "hasDefaultConstructor": false,
-                                  "isInterface": false,
-                                  "isInstantiable": false,
-                                  "isAbstract": false,
-                                  "isFinal": true,
-                                  "implementedInterfaces": [
-                                    "java.lang.Comparable"
-                                  ],
-                                  "parent": "java.lang.Number",
-                                  "genericTypes": [],
-                                  "isMap": false
-                                },
-                                "default": "2000"
-                              }
-                            },
-                            "annotations": {
-                              "description": {
-                                "value": "How often (in ms) to reconnect"
-                              }
-                            }
-                          },
-                          {
-                            "key": {
-                              "name": "count"
-                            },
-                            "model": {
-                              "type": "Number",
-                              "annotations": {
-                                "int": {},
-                                "default": "2"
-                              }
-                            },
-                            "annotations": {
-                              "description": {
-                                "value": "How many reconnection attempts to make"
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "Object",
-                        "annotations": {
-                          "typeId": "reconnect-forever"
-                        },
-                        "fields": [
-                          {
-                            "key": {
-                              "name": "frequency"
-                            },
-                            "model": {
-                              "type": "Number",
-                              "annotations": {
-                                "int": {},
-                                "classInformation": {
-                                  "classname": "java.lang.Long",
-                                  "hasDefaultConstructor": false,
-                                  "isInterface": false,
-                                  "isInstantiable": false,
-                                  "isAbstract": false,
-                                  "isFinal": true,
-                                  "implementedInterfaces": [
-                                    "java.lang.Comparable"
-                                  ],
-                                  "parent": "java.lang.Number",
-                                  "genericTypes": [],
-                                  "isMap": false
-                                },
-                                "default": "2000"
-                              }
-                            },
-                            "annotations": {
-                              "description": {
-                                "value": "How often (in ms) to reconnect"
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "String"
                   },
                   "hasDynamicType": false,
                   "required": false,
@@ -454,7 +582,7 @@
                   "role": "BEHAVIOUR",
                   "dslConfiguration": {
                     "allowsInlineDefinition": true,
-                    "allowsReferences": false,
+                    "allowsReferences": true,
                     "allowTopLevelDefinition": false
                   },
                   "layoutModel": {
@@ -465,20 +593,43 @@
                     "tabName": "Advanced"
                   },
                   "allowedStereotypeModels": [],
-                  "name": "reconnectionStrategy",
-                  "description": "A retry strategy in case of connectivity errors",
-                  "modelProperties": {
-                    "org.mule.runtime.extension.api.property.QNameModelProperty": {
-                      "value": {
-                        "namespaceURI": "http://www.mulesoft.org/schema/mule/core",
-                        "localPart": "abstract-reconnection-strategy",
-                        "prefix": "mule"
-                      }
-                    },
-                    "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {
-                      "sequence": 3
-                    }
-                  }
+                  "name": "target",
+                  "displayModel": {
+                    "displayName": "Target Variable"
+                  },
+                  "description": "The name of a variable on which the operation\u0027s output will be placed",
+                  "modelProperties": {}
+                },
+                {
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "hasDynamicType": false,
+                  "required": false,
+                  "isConfigOverride": false,
+                  "expressionSupport": "REQUIRED",
+                  "defaultValue": "#[payload]",
+                  "role": "BEHAVIOUR",
+                  "dslConfiguration": {
+                    "allowsInlineDefinition": true,
+                    "allowsReferences": true,
+                    "allowTopLevelDefinition": false
+                  },
+                  "layoutModel": {
+                    "password": false,
+                    "text": false,
+                    "query": false,
+                    "order": 5,
+                    "tabName": "Advanced"
+                  },
+                  "allowedStereotypeModels": [],
+                  "name": "targetValue",
+                  "displayModel": {
+                    "displayName": "Target Value"
+                  },
+                  "description": "An expression that will be evaluated against the operation\u0027s output and the outcome of that expression will be stored in the target variable",
+                  "modelProperties": {}
                 }
               ],
               "exclusiveParametersModels": [],
@@ -486,16 +637,16 @@
                 "password": false,
                 "text": false,
                 "query": false,
-                "order": 3
+                "order": 2
               },
               "showInDsl": false,
-              "name": "Connection",
+              "name": "Output",
               "description": "",
               "modelProperties": {}
             }
           ],
-          "name": "retrieveInfo",
-          "description": "Example of an operation that uses the configuration and a connection instance to perform some action.",
+          "name": "searchPhoto",
+          "description": "Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.",
           "modelProperties": {},
           "kind": "operation"
         }
@@ -1046,163 +1197,24 @@
             {
               "type": {
                 "format": "java",
-                "type": "String"
-              },
-              "hasDynamicType": false,
-              "required": false,
-              "isConfigOverride": false,
-              "expressionSupport": "SUPPORTED",
-              "role": "BEHAVIOUR",
-              "dslConfiguration": {
-                "allowsInlineDefinition": true,
-                "allowsReferences": true,
-                "allowTopLevelDefinition": false
-              },
-              "layoutModel": {
-                "password": false,
-                "text": false,
-                "query": false,
-                "order": 1,
-                "tabName": "Advanced"
-              },
-              "allowedStereotypeModels": [],
-              "name": "outputMimeType",
-              "description": "The mime type of the payload that this operation outputs.",
-              "modelProperties": {}
-            }
-          ],
-          "exclusiveParametersModels": [],
-          "layoutModel": {
-            "password": false,
-            "text": false,
-            "query": false,
-            "order": 1
-          },
-          "showInDsl": false,
-          "name": "General",
-          "description": "",
-          "modelProperties": {}
-        },
-        {
-          "parameters": [
-            {
-              "type": {
-                "format": "java",
-                "type": "String"
-              },
-              "hasDynamicType": false,
-              "required": false,
-              "isConfigOverride": false,
-              "expressionSupport": "NOT_SUPPORTED",
-              "role": "BEHAVIOUR",
-              "dslConfiguration": {
-                "allowsInlineDefinition": true,
-                "allowsReferences": true,
-                "allowTopLevelDefinition": false
-              },
-              "layoutModel": {
-                "password": false,
-                "text": false,
-                "query": false,
-                "order": 2,
-                "tabName": "Advanced"
-              },
-              "allowedStereotypeModels": [],
-              "name": "target",
-              "displayModel": {
-                "displayName": "Target Variable"
-              },
-              "description": "The name of a variable on which the operation\u0027s output will be placed",
-              "modelProperties": {}
-            },
-            {
-              "type": {
-                "format": "java",
-                "type": "String"
-              },
-              "hasDynamicType": false,
-              "required": false,
-              "isConfigOverride": false,
-              "expressionSupport": "REQUIRED",
-              "defaultValue": "#[payload]",
-              "role": "BEHAVIOUR",
-              "dslConfiguration": {
-                "allowsInlineDefinition": true,
-                "allowsReferences": true,
-                "allowTopLevelDefinition": false
-              },
-              "layoutModel": {
-                "password": false,
-                "text": false,
-                "query": false,
-                "order": 3,
-                "tabName": "Advanced"
-              },
-              "allowedStereotypeModels": [],
-              "name": "targetValue",
-              "displayModel": {
-                "displayName": "Target Value"
-              },
-              "description": "An expression that will be evaluated against the operation\u0027s output and the outcome of that expression will be stored in the target variable",
-              "modelProperties": {}
-            }
-          ],
-          "exclusiveParametersModels": [],
-          "layoutModel": {
-            "password": false,
-            "text": false,
-            "query": false,
-            "order": 2
-          },
-          "showInDsl": false,
-          "name": "Output",
-          "description": "",
-          "modelProperties": {}
-        }
-      ],
-      "name": "getRandomPhoto",
-      "description": "Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.",
-      "modelProperties": {},
-      "kind": "operation"
-    },
-    {
-      "blocking": true,
-      "executionType": "CPU_LITE",
-      "output": {
-        "type": {
-          "format": "java",
-          "type": "String"
-        },
-        "hasDynamicType": false,
-        "description": "",
-        "modelProperties": {}
-      },
-      "outputAttributes": {
-        "type": {
-          "format": "java",
-          "type": "Void"
-        },
-        "hasDynamicType": false,
-        "description": "",
-        "modelProperties": {}
-      },
-      "transactional": false,
-      "requiresConnection": false,
-      "supportsStreaming": false,
-      "notifications": [],
-      "nestedComponents": [],
-      "errors": [],
-      "stereotype": {
-        "type": "PROCESSOR",
-        "namespace": "MULE"
-      },
-      "parameterGroupModels": [
-        {
-          "parameters": [
-            {
-              "type": {
-                "format": "java",
-                "type": "String"
+                "type": "Number",
+                "annotations": {
+                  "classInformation": {
+                    "classname": "java.lang.Integer",
+                    "hasDefaultConstructor": false,
+                    "isInterface": false,
+                    "isInstantiable": false,
+                    "isAbstract": false,
+                    "isFinal": true,
+                    "implementedInterfaces": [
+                      "java.lang.Comparable"
+                    ],
+                    "parent": "java.lang.Number",
+                    "genericTypes": [],
+                    "isMap": false
+                  },
+                  "int": {}
+                }
               },
               "hasDynamicType": false,
               "required": true,
@@ -1221,7 +1233,7 @@
                 "order": 1
               },
               "allowedStereotypeModels": [],
-              "name": "person",
+              "name": "maxPhotos",
               "description": "",
               "modelProperties": {}
             },
@@ -1342,7 +1354,7 @@
           "modelProperties": {}
         }
       ],
-      "name": "sayHi",
+      "name": "superPhoto",
       "description": "Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.",
       "modelProperties": {},
       "kind": "operation"
@@ -1380,5 +1392,52 @@
     }
   ],
   "modelProperties": {},
-  "types": []
+  "types": [
+    {
+      "format": "java",
+      "type": "Object",
+      "annotations": {
+        "typeId": "com.emoran.RandonPhotoPOJO",
+        "classInformation": {
+          "classname": "com.emoran.RandonPhotoPOJO",
+          "hasDefaultConstructor": true,
+          "isInterface": false,
+          "isInstantiable": true,
+          "isAbstract": false,
+          "isFinal": false,
+          "implementedInterfaces": [],
+          "parent": "",
+          "genericTypes": [],
+          "isMap": false
+        },
+        "typeAlias": {
+          "value": "RandonPhotoPOJO"
+        }
+      },
+      "fields": []
+    },
+    {
+      "format": "java",
+      "type": "Object",
+      "annotations": {
+        "typeId": "com.emoran.searchPOJO",
+        "classInformation": {
+          "classname": "com.emoran.searchPOJO",
+          "hasDefaultConstructor": true,
+          "isInterface": false,
+          "isInstantiable": true,
+          "isAbstract": false,
+          "isFinal": false,
+          "implementedInterfaces": [],
+          "parent": "",
+          "genericTypes": [],
+          "isMap": false
+        },
+        "typeAlias": {
+          "value": "searchPOJO"
+        }
+      },
+      "fields": []
+    }
+  ]
 }

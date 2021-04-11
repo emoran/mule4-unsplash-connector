@@ -14,8 +14,13 @@ public class UnsplashConfiguration {
 
   @Parameter
   private String configId;
-
   public String getConfigId(){
+    return configId;
+  }
+
+  @Parameter
+  private String unsplashAccessToken;
+  public String getUnsplashAccessToken(){
     return configId;
   }
 }

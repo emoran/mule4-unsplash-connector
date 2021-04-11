@@ -2076,9 +2076,9 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_operations">Operations</a>
 <ul class="sectlevel2">
-<li><a href="#retrieveInfo">Retrieve Info</a></li>
 <li><a href="#getRandomPhoto">Get Random Photo</a></li>
-<li><a href="#sayHi">Say Hi</a></li>
+<li><a href="#searchPhoto">Search Photo</a></li>
+<li><a href="#superPhoto">Super Photo</a></li>
 </ul>
 </li>
 <li><a href="#_types">Types</a>
@@ -2152,6 +2152,15 @@ Default configuration
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Config Id</p></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Unsplash Access Token</p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
 <p>String</p>
 </div></div></td>
@@ -2241,7 +2250,10 @@ Default configuration
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#retrieveInfo">Retrieve Info</a> &#160;</p>
+<p><a href="#getRandomPhoto">Get Random Photo</a> &#160;</p>
+</li>
+<li>
+<p><a href="#searchPhoto">Search Photo</a> &#160;</p>
 </li>
 </ul>
 </div>
@@ -2253,13 +2265,13 @@ Default configuration
 <h2 id="_operations">Operations</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="retrieveInfo">Retrieve Info</h3>
+<h3 id="getRandomPhoto">Get Random Photo</h3>
 <div class="paragraph">
-<p><code>&lt;unsplash:retrieve-info&gt;</code></p>
+<p><code>&lt;unsplash:get-random-photo&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Example of an operation that uses the configuration and a connection instance to perform some action.
+Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.
 </p>
 </div>
 <div class="sect3">
@@ -2290,12 +2302,12 @@ Example of an operation that uses the configuration and a connection instance to
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Output Mime Type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Max Photos</p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>String</p>
+<p>Number</p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The mime type of the payload that this operation outputs.</p></td>
 <td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">10</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
@@ -2316,22 +2328,6 @@ Example of an operation that uses the configuration and a connection instance to
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Reconnection Strategy</p></td>
-<td class="tableblock halign-left valign-middle"><div><div class="ulist">
-<ul>
-<li>
-<p><a href="#reconnect">Reconnect</a></p>
-</li>
-<li>
-<p><a href="#reconnect-forever">Reconnect Forever</a></p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A retry strategy in case of connectivity errors</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -2346,7 +2342,7 @@ Example of an operation that uses the configuration and a connection instance to
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Type</strong></p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>String</p>
+<p>Array of <a href="#RandonPhotoPOJO">[RandonPhotoPOJO]</a></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2362,24 +2358,11 @@ Example of an operation that uses the configuration and a connection instance to
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_throws">Throws</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>UNSPLASH:RETRY_EXHAUSTED &#160;</p>
-</li>
-<li>
-<p>UNSPLASH:CONNECTIVITY &#160;</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="getRandomPhoto">Get Random Photo</h3>
+<h3 id="searchPhoto">Search Photo</h3>
 <div class="paragraph">
-<p><code>&lt;unsplash:get-random-photo&gt;</code></p>
+<p><code>&lt;unsplash:search-photo&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
@@ -2407,13 +2390,38 @@ Example of a simple operation that receives a string parameter and returns a new
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Output Mime Type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Configuration</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The name of the configuration to use.</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Search Term</p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
 <p>String</p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The mime type of the payload that this operation outputs.</p></td>
+<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Page</p></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p>Number</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Per Page</p></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p>Number</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Target Variable</p></td>
@@ -2447,17 +2455,27 @@ Example of a simple operation that receives a string parameter and returns a new
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Type</strong></p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>String</p>
+<p><a href="#searchPOJO">[searchPOJO]</a></p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_for_configurations_2">For Configurations.</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#config">Config</a> &#160;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="sayHi">Say Hi</h3>
+<h3 id="superPhoto">Super Photo</h3>
 <div class="paragraph">
-<p><code>&lt;unsplash:say-hi&gt;</code></p>
+<p><code>&lt;unsplash:super-photo&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
@@ -2485,9 +2503,9 @@ Example of a simple operation that receives a string parameter and returns a new
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Person</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Max Photos</p></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>String</p>
+<p>Number</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"></td>
