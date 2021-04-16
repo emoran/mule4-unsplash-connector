@@ -63,7 +63,7 @@ Default configuration
 `<unsplash:get-random-photo>`
 
 +++
-Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.
+Operation that allows to get a Random photo from Unsplash.
 +++
 
 ==== Parameters
@@ -71,7 +71,9 @@ Example of a simple operation that receives a string parameter and returns a new
 |======================
 | Name | Type | Description | Default Value | Required
 | Configuration | String | The name of the configuration to use. | | *x*{nbsp}
-| Max Photos a| Number |  |  +++10+++ | {nbsp}
+| Count a| Number |  |  +++10+++ | {nbsp}
+| Keyword a| String |  |  | {nbsp}
+| Orientation a| String |  |  +++portrait+++ | {nbsp}
 | Target Variable a| String |  +++The name of a variable on which the operation's output will be placed+++ |  | {nbsp}
 | Target Value a| String |  +++An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable+++ |  +++#[payload]+++ | {nbsp}
 |======================
@@ -92,7 +94,7 @@ Example of a simple operation that receives a string parameter and returns a new
 `<unsplash:search-photo>`
 
 +++
-Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.
+Operation that allows to Search photos from the Unsplash API
 +++
 
 ==== Parameters
@@ -102,7 +104,8 @@ Example of a simple operation that receives a string parameter and returns a new
 | Configuration | String | The name of the configuration to use. | | *x*{nbsp}
 | Search Term a| String |  |  ++++++ | {nbsp}
 | Page a| Number |  |  ++++++ | {nbsp}
-| Per Page a| Number |  |  | *x*{nbsp}
+| Per Page a| Number |  |  +++10+++ | {nbsp}
+| Color a| String |  |  | {nbsp}
 | Target Variable a| String |  +++The name of a variable on which the operation's output will be placed+++ |  | {nbsp}
 | Target Value a| String |  +++An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable+++ |  +++#[payload]+++ | {nbsp}
 |======================
@@ -115,33 +118,6 @@ Example of a simple operation that receives a string parameter and returns a new
 
 ==== For Configurations.
 * <<config>> {nbsp}
-
-
-
-[[superPhoto]]
-=== Super Photo
-`<unsplash:super-photo>`
-
-+++
-Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.
-+++
-
-==== Parameters
-[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
-|======================
-| Name | Type | Description | Default Value | Required
-| Max Photos a| Number |  |  | *x*{nbsp}
-| Output Mime Type a| String |  +++The mime type of the payload that this operation outputs.+++ |  | {nbsp}
-| Target Variable a| String |  +++The name of a variable on which the operation's output will be placed+++ |  | {nbsp}
-| Target Value a| String |  +++An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable+++ |  +++#[payload]+++ | {nbsp}
-|======================
-
-==== Output
-[cols=".^50%,.^50%"]
-|======================
-| *Type* a| String
-|======================
-
 
 
 

@@ -41,9 +41,15 @@
     </extension>
     <operations>
         <operation name="getRandomPhoto">
-            <description><![CDATA[Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.]]></description>
+            <description><![CDATA[Operation that allows to get a Random photo from Unsplash.]]></description>
             <parameters>
-                <parameter name="maxPhotos">
+                <parameter name="count">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="keyword">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="orientation">
                     <description><![CDATA[]]></description>
                 </parameter>
                 <parameter name="target">
@@ -55,7 +61,7 @@
             </parameters>
         </operation>
         <operation name="searchPhoto">
-            <description><![CDATA[Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.]]></description>
+            <description><![CDATA[Operation that allows to Search photos from the Unsplash API]]></description>
             <parameters>
                 <parameter name="searchTerm">
                     <description><![CDATA[]]></description>
@@ -66,22 +72,8 @@
                 <parameter name="perPage">
                     <description><![CDATA[]]></description>
                 </parameter>
-                <parameter name="target">
-                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
-                </parameter>
-                <parameter name="targetValue">
-                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
-                </parameter>
-            </parameters>
-        </operation>
-        <operation name="superPhoto">
-            <description><![CDATA[Example of a simple operation that receives a string parameter and returns a new string message that will be set on the payload.]]></description>
-            <parameters>
-                <parameter name="maxPhotos">
+                <parameter name="color">
                     <description><![CDATA[]]></description>
-                </parameter>
-                <parameter name="outputMimeType">
-                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
                 </parameter>
                 <parameter name="target">
                     <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>

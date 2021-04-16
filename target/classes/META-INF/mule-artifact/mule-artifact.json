@@ -3,7 +3,7 @@
     "id": "java",
     "attributes": {
       "type": "org.mule.extension.unsplash.internal.UnsplashExtension",
-      "version": "1.0.9"
+      "version": "1.0.0"
     }
   },
   "name": "Unsplash",

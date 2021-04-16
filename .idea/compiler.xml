@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/classes/META-INF" />
         <sourceTestOutputDir name="target/generated-sources/apt-test" />
         <outputRelativeToContentRoot value="true" />
-        <option name="extension.version" value="1.0.1" />
+        <option name="extension.version" value="1.0.9" />
         <processor name="org.mule.runtime.ast.internal.extension.loader.ASTExtensionResourcesGeneratorAnnotationProcessor" />
         <module name="unsplash" />
       </profile>
